@@ -1,0 +1,38 @@
+
+install.packages("zoo")
+install.packages("forecast")
+install.packages("Metrics")
+library(zoo)
+library(ggplot2)
+library(forecast)
+library(Metrics)
+data <- c(10,23,36,40,51,63,72,84,93,102,113,125)
+series_ts = ts(data)
+test_set <- c(85,92)
+nval = length(test_set)
+ar_model <- Arima(series_ts, order = c(1, 0, 0))
+ma_model <- Arima(series_ts, order = c(0, 0, 1))
+arma_model <- Arima(series_ts, order = c(1, 0, 1))
+arima_model <- Arima(series_ts, order = c(1, 1, 1))
+auto_arima_no_season_model <- auto.arima(series_ts, seasonal = FALSE)
+auto_arima_season_model <- auto.arima(series_ts, seasonal = TRUE)
+ar_forecasts <- forecast(ar_model, h = nval)
+ma_forecasts <- forecast(ma_model, h = nval)
+arma_forecasts <- forecast(arma_model, h = nval)
+arima_forecasts <- forecast(arima_model, h = nval)
+auto_arima_no_season_forecasts <- forecast(auto_arima_no_season_model, h = nval)
+auto_arima_season_forecasts <- forecast(auto_arima_season_model, h = nval)
+arima_forcast_df <- data.frame(
+  AR = ar_forecasts$mean,
+  MA = ma_forecasts$mean,
+  ARMA = arma_forecasts$mean,
+  ARIMA = arima_forecasts$mean,
+  AutoARIMANoSeason = auto_arima_no_season_forecasts$mean,
+  AutoARIMASeason = auto_arima_season_forecasts$mean
+)
+arima_forcast_df
+mae(test_set,ar_forecasts$mean)
+mape(test_set,ar_forecasts$mean)
+rmse(test_set,ar_forecasts$mean)
+ar_forecasts$model$coef
+summary(arima_forecasts$model)
