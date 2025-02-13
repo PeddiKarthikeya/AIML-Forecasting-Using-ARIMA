@@ -1,10 +1,10 @@
 Time Series Forecasting Project
 
-📌 Overview
+->Overview
 
 This project applies various time series models to predict future values based on given historical data. The models implemented include AR, MA, ARMA, ARIMA, and Auto ARIMA (both seasonal and non-seasonal).
 
-📊 Dataset
+-> Dataset
 
 The dataset consists of a simple time series:
 
@@ -14,7 +14,7 @@ A test set is also provided to evaluate model accuracy:
 
 85, 92
 
-🚀 Models Used
+-> Models Used
 
 AR (AutoRegressive Model): Uses past values to predict future values.
 
@@ -26,7 +26,7 @@ ARIMA (AutoRegressive Integrated Moving Average): Uses differencing to handle no
 
 Auto ARIMA (with & without seasonality): Automatically selects the best ARIMA parameters.
 
-🔧 Installation
+-> Installation
 
 Ensure you have the required R packages installed:
 
@@ -41,7 +41,7 @@ library(ggplot2)
 library(forecast)
 library(Metrics)
 
-📈 Forecasting & Evaluation
+-> Forecasting & Evaluation
 
 The script forecasts the next two values and evaluates performance using:
 
@@ -51,7 +51,7 @@ MAPE (Mean Absolute Percentage Error)
 
 RMSE (Root Mean Squared Error)
 
-📜 Usage
+-> Usage
 
 Run the R script to:
 
@@ -61,7 +61,7 @@ Generate forecasts for future values.
 
 Compare model performance using error metrics.
 
-📌 Example Output
+->Example Output
 
 Predicted values for the next two time points using different models:
 
@@ -69,7 +69,3 @@ Predicted values for the next two time points using different models:
   X1    X2    X3    X4      X5                   X6
 
 (E.g., replace X1, X2... with actual results)
-
-📬 Contact
-
-For questions or improvements, feel free to open an issue or submit a pull request! 🚀
